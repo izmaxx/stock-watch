@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { TrackerComponent } from './components/tracker/tracker.component';
 
 const routes: Routes = [
-  { path: '', loadChildren: () => import('./hello/hello.module').then((module) => module.HelloModule) },
+  { path: '', redirectTo: 'tutorials', pathMatch: 'full' },
+  { path: 'tutorials', component: TrackerComponent },
+  // { path: 'tutorials/:id', component: TutorialDetailsComponent },
+
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
