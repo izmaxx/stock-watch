@@ -11,6 +11,7 @@ import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { MatSort } from '@angular/material/sort';
 import { SortDirection } from '@angular/material/sort';
 import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-tracker',
@@ -25,6 +26,10 @@ export class TrackerComponent implements OnInit {
     sortField: 'ticker',
     sortAscending: 'asc',
   };
+
+  myGroup = new FormGroup({
+    search: new FormControl()
+  });
 
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild('input') input!: ElementRef;
@@ -45,7 +50,7 @@ export class TrackerComponent implements OnInit {
   constructor(
     private tutorialService: TutorialService,
     private toastr: ToastrService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.tutorialService.retrievePrices().subscribe();

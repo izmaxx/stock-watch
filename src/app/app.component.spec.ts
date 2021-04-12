@@ -27,18 +27,4 @@ describe('AppComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it(`should have as title 'angular-testing'`, () => {
-    expect(component.title).toEqual(expectedTitle);
-  });
-
-  it(
-    'should render title',
-    waitForAsync(() => {
-      fixture.whenStable().then(() => {
-        fixture.detectChanges();
-        const compiled = fixture.nativeElement;
-        expect(compiled.querySelector('header').textContent).toContain(`${expectedTitle}`);
-      });
-    })
-  );
 });
